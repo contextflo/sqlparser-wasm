@@ -26,8 +26,14 @@ Tables inside expressions (`IN (SELECT ...)`, `EXISTS`, scalar subqueries) are f
 
 ## Usage
 
+```sh
+npm install @contextflo/sqlparser-wasm
+```
+
+Node only for now (`wasm-pack --target nodejs`). Every release is built and published from this repo by GitHub Actions, with [npm provenance](https://docs.npmjs.com/generating-provenance-statements).
+
 ```js
-const { tables } = require('./pkg/sqlparser_wasm.js')
+const { tables } = require('@contextflo/sqlparser-wasm')
 
 JSON.parse(tables('SELECT * FROM orders o JOIN crm.customers c ON c.id = o.customer_id', 'snowflake',
   JSON.stringify({ defaultDatabase: 'ANALYTICS', defaultSchema: 'PUBLIC' })))
@@ -62,7 +68,7 @@ On 5,303 real Snowflake queries written by AI agents (casts, `col:path` JSON acc
 
 ```sh
 cargo test                                   # sample cases, native
-wasm-pack build --target nodejs --release    # -> pkg/
+wasm-pack build --target nodejs --release --scope contextflo    # -> pkg/
 node tests/smoke.mjs                         # same cases against the WASM build
 ```
 

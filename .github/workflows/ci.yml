@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: rustup target add wasm32-unknown-unknown
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: cargo install wasm-pack --locked --version 0.15.1
+
+      # The sample cases natively, then the same cases against the WASM build that would ship
+      - run: cargo test --locked
+      - run: wasm-pack build --target nodejs --release --scope contextflo
+      - run: node tests/smoke.mjs
