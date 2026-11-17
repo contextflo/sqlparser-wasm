@@ -1,0 +1,10 @@
+sqlparser-wasm
+Copyright 2026 Contextflo
+
+This product bundles Apache DataFusion sqlparser-rs, compiled to WebAssembly.
+
+Apache DataFusion sqlparser-rs
+Copyright 2024-2026 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
