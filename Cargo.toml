@@ -1,6 +1,6 @@
 [package]
 name = "sqlparser-wasm"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "Apache-2.0"
 description = "WebAssembly build of Apache DataFusion's sqlparser-rs: which tables does a SQL query read. Fails closed."
